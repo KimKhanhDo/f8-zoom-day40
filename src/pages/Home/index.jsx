@@ -18,7 +18,7 @@ export default function Home() {
                 </Link>
 
                 <a
-                    href="redux.html"
+                    href={`${import.meta.env.BASE_URL}redux.html`}
                     target="_blank"
                     className={styles.card}
                 >
