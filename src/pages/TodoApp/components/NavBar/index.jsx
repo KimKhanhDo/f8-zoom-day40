@@ -16,7 +16,7 @@ function NavBar() {
                 Todo App
             </NavLink>
             <a
-                href="/redux.html"
+                href={`${import.meta.env.BASE_URL}redux.html`}
                 target="_blank"
                 className={styles.navButton}
             >
