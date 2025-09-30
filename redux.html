@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1"
+        />
+        <title>Redux Counter</title>
+        <link
+            rel="stylesheet"
+            href="redux.css"
+        />
+    </head>
+    <body>
+        <main class="wrap">
+            <section class="card">
+                <header class="header">
+                    <h1 class="title">Redux Counter</h1>
+                    <span class="badge">Redux Core</span>
+                </header>
+
+                <div class="counter">
+                    <div
+                        id="value"
+                        class="value"
+                    >
+                        0
+                    </div>
+                </div>
+                <!-- <p class="hint">UI mẫu (không có logic).</p> -->
+
+                <div class="btns">
+                    <button
+                        id="increase-btn"
+                        class="btn primary"
+                    >
+                        ＋Increase
+                    </button>
+                    <button
+                        id="decrease-btn"
+                        class="btn primary"
+                    >
+                        − Decrease
+                    </button>
+                    <button
+                        id="reset-btn"
+                        class="btn reset"
+                    >
+                        Reset
+                    </button>
+                    <button
+                        id="remove-btn"
+                        class="btn alert"
+                    >
+                        Remove Listener
+                    </button>
+                </div>
+            </section>
+        </main>
+
+        <script
+            type="module"
+            src="redux.js"
+        ></script>
+
+        <script type="module">
+            import { createStore } from './redux.js';
+
+            const initState = 100;
+
+            function reducer(state = initState, action) {
+                console.log('🚀 ~ reducer ~ state, action:', state, action);
+
+                switch (action.type) {
+                    case 'increase':
+                        return state + 1;
+
+                    case 'decrease':
+                        return state - 1;
+
+                    case 'reset':
+                        return 0;
+
+                    default:
+                        return state;
+                }
+            }
+
+            const store = createStore(reducer);
+            console.log('🚀 ~ store:', store);
+
+            // DOM element
+            const counterValue = document.querySelector('#value');
+            const increaseBtn = document.querySelector('#increase-btn');
+            const decreaseBtn = document.querySelector('#decrease-btn');
+            const resetBtn = document.querySelector('#reset-btn');
+            const removeBtn = document.querySelector('#remove-btn');
+
+            // Render UI
+            function render() {
+                counterValue.innerHTML = store.getState();
+            }
+            render();
+
+            // Cập nhật UI khi state thay đổi
+            const unsubscribe = store.subscribe(() => render());
+
+            // Event Handlers
+            increaseBtn.addEventListener('click', () => {
+                console.log('Button increase clicked');
+
+                store.dispatch({
+                    type: 'increase',
+                });
+            });
+
+            decreaseBtn.addEventListener('click', () => {
+                console.log('Button decrease clicked');
+
+                store.dispatch({
+                    type: 'decrease',
+                });
+            });
+
+            resetBtn.addEventListener('click', () => {
+                console.log('Button reset clicked');
+
+                store.dispatch({
+                    type: 'reset',
+                });
+            });
+
+            removeBtn.addEventListener('click', () => {
+                console.log('Button remove listener clicked');
+                unsubscribe();
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,127 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    height: 100%;
+    font-family: Inter, Arial, Helvetica, sans-serif;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+    user-select: none;
+
+    background: radial-gradient(
+            800px 500px at 15% 10%,
+            #e6f3ff 0%,
+            rgba(230, 243, 255, 0) 60%
+        ),
+        radial-gradient(
+            900px 600px at 85% 90%,
+            #ffe6f0 0%,
+            rgba(255, 230, 240, 0) 65%
+        ),
+        linear-gradient(180deg, #f7f9fc, #ecf1f7);
+}
+
+/* Card */
+.card {
+    background: rgba(255, 253, 253, 0.5);
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    padding: 28px;
+    width: 420px;
+    max-width: 90%;
+    text-align: center;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0;
+    color: #555;
+}
+
+.badge {
+    background: linear-gradient(90deg, #6c63ff, #4ad0ff);
+    color: #fff;
+    padding: 10px 12px;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    box-shadow: 0 3px 10px rgba(108, 99, 255, 0.3);
+}
+
+/* Counter value */
+.counter {
+    margin: 20px 0 12px;
+}
+
+.value {
+    font-size: 4rem;
+    font-weight: bold;
+    color: #222;
+}
+
+.hint {
+    color: #888;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+
+/* Buttons layout */
+.btns {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    border: none;
+    outline: none;
+}
+
+.btn {
+    padding: 14px;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 550;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s ease;
+}
+
+/* Button  */
+.btn.primary {
+    background: #4ad0ff;
+    color: #fff;
+}
+
+.btn.reset {
+    background: #dfe1e7;
+    color: #3d3c3c;
+}
+
+.btn.alert {
+    background: #ff6379;
+    color: #fff;
+}
+
+.btn.primary:hover,
+.btn.reset:hover,
+.btn.alert:hover {
+    opacity: 0.8;
+}
+
+@media (max-width: 420px) {
+    .btns {
+        grid-template-columns: 1fr;
+    }
+}
