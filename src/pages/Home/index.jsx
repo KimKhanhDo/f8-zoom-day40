@@ -18,9 +18,8 @@ export default function Home() {
                 </Link>
 
                 <a
-                    href="/redux.html"
+                    href="redux.html"
                     target="_blank"
-                    rel="noreferrer"
                     className={styles.card}
                 >
                     <h2>🧪 Redux Demo</h2>

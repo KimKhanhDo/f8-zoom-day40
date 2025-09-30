@@ -9,6 +9,7 @@
         "lint": "eslint .",
         "preview": "vite preview",
         "mock-api": "json-server --watch db.json",
+        "predeploy": "npm run build",
         "deploy": "gh-pages -d dist"
     },
     "dependencies": {
