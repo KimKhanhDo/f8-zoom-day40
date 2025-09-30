@@ -12,7 +12,7 @@ export default function NotFound() {
                 </p>
                 <div className={styles.actions}>
                     <Link
-                        to="/"
+                        to="/todo"
                         className={styles.btn}
                     >
                         Back to Home

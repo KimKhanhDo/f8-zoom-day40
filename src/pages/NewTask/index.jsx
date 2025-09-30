@@ -5,7 +5,10 @@ import TaskForm from '@/components/TaskForm';
 import { useDispatch, useSelector } from '@/libs/react-redux';
 import { ADD_TASK, SET_ERROR, SET_LOADING } from '@/store/reducers/taskReducer';
 
-const API = 'http://localhost:3000/tasks';
+// const API = 'http://localhost:3000/tasks';
+const API = import.meta.env.DEV
+    ? 'http://localhost:3000/tasks'
+    : `${import.meta.env.BASE_URL}db.json`;
 
 function NewTask() {
     const navigate = useNavigate();
