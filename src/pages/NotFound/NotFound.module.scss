@@ -1,0 +1,61 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 40px 16px;
+}
+
+.card {
+    width: 100%;
+    max-width: 720px;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    padding: 40px 28px;
+    text-align: center;
+}
+
+.badge {
+    display: inline-block;
+    font-weight: 700;
+    color: #2563eb;
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-radius: 9999px;
+    padding: 6px 12px;
+    margin-bottom: 10px;
+}
+
+.title {
+    font-size: 28px;
+    font-weight: 800;
+    color: #111827;
+    margin: 6px 0 8px;
+}
+
+.desc {
+    color: #6b7280;
+    margin-bottom: 22px;
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    padding: 0 16px;
+    background: #2563eb;
+    color: #fff;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 500;
+}
+.btn:hover {
+    filter: brightness(0.96);
+}

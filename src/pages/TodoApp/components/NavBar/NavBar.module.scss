@@ -1,0 +1,29 @@
+.nav {
+    display: flex;
+    gap: 8px;
+}
+
+.navLink {
+    padding: 8px 12px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #374151;
+}
+
+.active {
+    color: #111827;
+    background: #e5e7eb;
+}
+
+.navButton {
+    padding: 8px 12px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #fff;
+    background: #3b82f6;
+}
+
+.activePrimary {
+    background: #2563eb;
+    color: #fff;
+}

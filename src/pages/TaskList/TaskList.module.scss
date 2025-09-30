@@ -1,0 +1,114 @@
+.wrap {
+    display: grid;
+    place-items: start center;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 720px;
+    height: 80vh;
+    margin: 0 auto;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    padding: 24px 30px 40px;
+}
+
+.title {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: 0.3px;
+    margin: 4px 0 16px;
+    text-align: center;
+}
+
+.block {
+    margin: 14px 0;
+}
+
+.label {
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 8px;
+}
+
+.inputWithIcon {
+    position: relative;
+
+    input {
+        width: calc(100% - 60px);
+        height: 40px;
+        padding: 0 40px 0 14px;
+        border: 1px solid #e5e7eb;
+        border-radius: 10px;
+        outline: none;
+        background: #f9fafb;
+        transition: border 0.2s, background 0.2s;
+
+        &:focus {
+            border-color: #93c5fd;
+            background: #fff;
+        }
+    }
+}
+
+.searchIcon {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 16px;
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+.list {
+    list-style: none;
+    padding: 4px;
+    margin: 12px 0 4px;
+    display: grid;
+    gap: 8px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.footer {
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 1px dashed #e5e7eb;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.error {
+    margin: 12px 0 16px;
+    padding: 12px 14px;
+    border: 1px solid #fecaca;
+    background: #fee2e2;
+    color: #991b1b;
+    border-radius: 12px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.empty {
+    list-style: none;
+    margin: 8px 0;
+    padding: 14px 16px;
+    border: 1px dashed #d1d5db;
+    background: #f9fafb;
+    color: #6b7280;
+    border-radius: 12px;
+    text-align: center;
+    font-style: italic;
+}
