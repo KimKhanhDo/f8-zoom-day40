@@ -57,8 +57,6 @@ function TaskList() {
                     payload: error.message,
                 });
 
-                dispatch({ type: SET_TASKS, payload: [] });
-
                 dispatch({ type: SET_LOADING, payload: false });
             });
 
