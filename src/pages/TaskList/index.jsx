@@ -15,11 +15,7 @@ import TaskItem from '@/components/TaskItem';
 import TaskForm from '@/components/TaskForm';
 import Loading from '@/components/Loading';
 
-// const API = 'http://localhost:3000/tasks';
-
-const API = import.meta.env.DEV
-    ? 'http://localhost:3000/tasks'
-    : `${import.meta.env.BASE_URL}db.json`;
+const API = 'http://localhost:3000/tasks';
 
 function TaskList() {
     const [deletingId, setDeletingId] = useState(null);
@@ -60,6 +56,8 @@ function TaskList() {
                     type: SET_ERROR,
                     payload: error.message,
                 });
+
+                dispatch({ type: SET_TASKS, payload: [] });
 
                 dispatch({ type: SET_LOADING, payload: false });
             });

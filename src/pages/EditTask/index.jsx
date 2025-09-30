@@ -10,11 +10,7 @@ import {
     UPDATE_TASK,
 } from '@/store/reducers/taskReducer';
 
-// const API = 'http://localhost:3000/tasks';
-
-const API = import.meta.env.DEV
-    ? 'http://localhost:3000/tasks'
-    : `${import.meta.env.BASE_URL}db.json`;
+const API = 'http://localhost:3000/tasks';
 
 function EditTask() {
     const { id } = useParams();
