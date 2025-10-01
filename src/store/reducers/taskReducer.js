@@ -2,15 +2,17 @@ const initialState = {
     tasks: [],
     loading: false,
     error: null,
+    searchQuery: '',
 };
 
-export const SET_TASKS = 'tasks/SET_TASKS';
-export const ADD_TASK = 'tasks/ADD_TASK';
-export const UPDATE_TASK = 'tasks/UPDATE_TASK';
-export const DELETE_TASK = 'tasks/DELETE_TASK';
+export const SET_TASKS = 'tasks/setTasks';
+export const ADD_TASK = 'tasks/addTask';
+export const UPDATE_TASK = 'tasks/updateTask';
+export const DELETE_TASK = 'tasks/deleteTask';
+export const SEARCH_TASK = 'filter/searchFilterChange';
 
-export const SET_LOADING = 'tasks/SET_LOADING';
-export const SET_ERROR = 'tasks/SET_ERROR';
+export const SET_LOADING = 'tasks/setLoading';
+export const SET_ERROR = 'tasks/setError';
 
 function reducer(state = initialState, action) {
     switch (action.type) {
@@ -48,6 +50,13 @@ function reducer(state = initialState, action) {
             return {
                 ...state,
                 loading: action.payload,
+            };
+        }
+
+        case SEARCH_TASK: {
+            return {
+                ...state,
+                searchQuery: action.payload,
             };
         }
 

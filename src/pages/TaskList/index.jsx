@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from '@/libs/react-redux';
 import {
     ADD_TASK,
     DELETE_TASK,
+    SEARCH_TASK,
     SET_ERROR,
     SET_LOADING,
     SET_TASKS,
@@ -18,15 +19,28 @@ import Loading from '@/components/Loading';
 const API = 'http://localhost:3000/tasks';
 
 function TaskList() {
-    const [deletingId, setDeletingId] = useState(null);
-
-    const tasks = useSelector((state) => state.tasks);
-    const loading = useSelector((state) => state.loading);
-    const error = useSelector((state) => state.error);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
+    const [deletingId, setDeletingId] = useState(null);
+    const [searchText, setSearchText] = useState('');
+
+    const tasks = useSelector((state) => {
+        const query = (state.searchQuery ?? '').toLowerCase();
+        if (!query) return state.tasks;
+
+        const filterTasks = state.tasks.filter((task) =>
+            task.name.toLowerCase().includes(query)
+        );
+
+        return filterTasks;
+    });
+    const loading = useSelector((state) => state.loading);
+    const error = useSelector((state) => state.error);
+
     useEffect(() => {
+        let timeoutId;
+
         dispatch({
             type: SET_LOADING,
             payload: true,
@@ -41,7 +55,7 @@ function TaskList() {
                 return res.json();
             })
             .then((data) => {
-                setTimeout(() => {
+                timeoutId = setTimeout(() => {
                     dispatch({
                         type: SET_TASKS,
                         payload: data,
@@ -60,7 +74,9 @@ function TaskList() {
                 dispatch({ type: SET_LOADING, payload: false });
             });
 
-        return () => clearTimeout();
+        return () => {
+            if (timeoutId) clearTimeout(timeoutId);
+        };
     }, [dispatch]);
 
     const handleEditTask = async (task) => {
@@ -143,6 +159,12 @@ function TaskList() {
         }
     };
 
+    const handleSearchTextChange = (e) => {
+        const value = e.target.value;
+        setSearchText(value);
+        dispatch({ type: SEARCH_TASK, payload: value });
+    };
+
     const showEmpty = tasks.length === 0;
     const showError = !loading && error;
 
@@ -155,7 +177,11 @@ function TaskList() {
                 <div className={styles.block}>
                     <label className={styles.label}>Search</label>
                     <div className={styles.inputWithIcon}>
-                        <input placeholder="Type keywords..." />
+                        <input
+                            value={searchText}
+                            placeholder="Type keywords..."
+                            onChange={handleSearchTextChange}
+                        />
                         <span className={styles.searchIcon}>🔍</span>
                     </div>
                 </div>
